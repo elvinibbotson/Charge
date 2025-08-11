@@ -276,24 +276,29 @@ function backup() {
     a.click();
 }
 id('restoreButton').addEventListener('click',function() {
-	toggleDialog('restoreDialog',true);
-});
-id("fileChooser").addEventListener('change',function() {
-    var file=id('fileChooser').files[0];
-    console.log("file: "+file+" name: "+file.name);
-    var fileReader=new FileReader();
-    fileReader.addEventListener('load', function(evt) {
-	    console.log("file read: "+evt.target.result);
-    	var data=evt.target.result;
-    	var json=JSON.parse(data);
-    	logs=json.logs;
-    	charges=json.charges;
-    	console.log(logs.length+' logs & '+charges.length+' charges');
-    	save();
-    	toggleDialog('	restoreDialog',false);
-    	load();
-    });
-    fileReader.readAsText(file);
+	var event = new MouseEvent('click',{
+		bubbles: true,
+		cancelable: true,
+		view: window
+	});
+	fileChooser.dispatchEvent(event);
+	fileChooser.onchange=(event)=>{
+		var file=id('fileChooser').files[0];
+    	console.log("file name: "+file.name);
+    	var fileReader=new FileReader();
+    	fileReader.addEventListener('load', function(evt) {
+			console.log("file read: "+evt.target.result);
+    		var data=evt.target.result;
+    		var json=JSON.parse(data);
+    		logs=json.logs;
+    		charges=json.charges;
+    		console.log(logs.length+' logs & '+charges.length+' charges');
+    		save();
+    		load();
+    	});
+    	fileReader.readAsText(file);
+	}
+	toggleDialog('dataDialog',false);
 });
 // START-UP CODE
 scr.w=screen.width;
