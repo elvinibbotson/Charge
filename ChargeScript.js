@@ -234,9 +234,8 @@ function populateList() {
 function load() {
 	var data=window.localStorage.getItem('ChargeData');
 	if(!data) {
-		id('restoreMessage').innerText='no data - restore?';
-		toggleDialog('restoreDialog',true);
-		return;
+		alert('No data - restore backup file?');
+		toggleDialog('dataDialog',true);
 	}
 	var json=JSON.parse(data);
 	logs=json.logs;
@@ -275,7 +274,7 @@ function backup() {
     document.body.appendChild(a);
     a.click();
 }
-id('restoreButton').addEventListener('click',function() {
+id('restoreButton').addEventListener('click',function(){
 	var event = new MouseEvent('click',{
 		bubbles: true,
 		cancelable: true,
