@@ -234,7 +234,8 @@ function populateList() {
 function load() {
 	var data=window.localStorage.getItem('ChargeData');
 	if(!data) {
-		alert('No data - restore backup file?');
+		id('dataMessage').innerText='No data - restore backup?';
+		id('backupButton').disabled=true;
 		toggleDialog('dataDialog',true);
 	}
 	var json=JSON.parse(data);
@@ -248,7 +249,8 @@ function load() {
 	var days=today-backupDay;
 	if(days>15) days='ages';
 	if(days>4) { // backup reminder every 5 days
-		id('backupMessage').innerText=days+' since last backup';
+		id('dataMessage').innerText=days+' since last backup';
+		id('restoreButton').disabled=true;
 		toggleDialog('backupDialog',true);
 	}
 }
@@ -273,6 +275,9 @@ function backup() {
    	a.download=fileName;
     document.body.appendChild(a);
     a.click();
+    id('restoreButton').disabled=false;
+    id('dataMessage').innerText='';
+    toggleDialog('dataDialog',false);
 }
 id('restoreButton').addEventListener('click',function(){
 	var event = new MouseEvent('click',{
@@ -297,6 +302,8 @@ id('restoreButton').addEventListener('click',function(){
     	});
     	fileReader.readAsText(file);
 	}
+	id('backupButton').disabled=false;
+	id('dataMessage').innerText='';
 	toggleDialog('dataDialog',false);
 });
 // START-UP CODE
