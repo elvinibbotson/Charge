@@ -117,6 +117,7 @@ function  toggleDialog(d, visible) {
     console.log('toggle '+d+' - '+visible);
   	id('buttonNew').style.display=(visible)?'none':'block';
   	id(d).style.display=(visible)?'block':'none';
+  	id('curtain').style.height=(visible)?'100%':'0';
 }
 // OPEN SELECTED LOG
 function openLog(month) {
