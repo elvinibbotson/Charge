@@ -248,11 +248,10 @@ function load() {
 	populateList();
 	today=Math.floor(new Date().getTime()/86400000);
 	var days=today-backupDay;
-	if(days>15) days='ages';
 	if(days>4) { // backup reminder every 5 days
 		id('dataMessage').innerText=days+' since last backup';
 		id('restoreButton').disabled=true;
-		toggleDialog('backupDialog',true);
+		toggleDialog('dataDialog',true);
 	}
 }
 function save() {
