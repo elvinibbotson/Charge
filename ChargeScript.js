@@ -20,16 +20,19 @@ var backupDay;
 var capacity=48; // usable battery capacity (kWh) for Peugeot e-208
 // var root; // OPFS root directory
 // EVENT LISTENERS
+/*
 id('main').addEventListener('touchstart', function(event) {
     // console.log(event.changedTouches.length+" touches");
     startX=event.changedTouches[0].clientX;
 })
 id('main').addEventListener('touchend', function(event) {
     var dragX=event.changedTouches[0].clientX-startX;
+    
     if(dragX<-50) { // drag left
     	if(currentDialog) toggleDialog(currentDialog,false); // close an open dialog
     }
 })
+*/
 // TAP HEADER - DATA MENU
 id('heading').addEventListener('click',function() {toggleDialog('dataDialog',true);})
 // NEW BUTTON
@@ -109,6 +112,9 @@ function display(message) {
 	id('messageDialog').innerHTML=message;
 	toggleDialog('messageDialog',true);
 }
+id('curtain').addEventListener('click',function() {
+	toggleDialog(currentDialog,false);
+})
 // SHOW/HIDE DIALOGS
 function  toggleDialog(d, visible) {
 	if(currentDialog) id(currentDialog).style.display='none';
