@@ -3,16 +3,16 @@
 <head>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<title>SolidCharge</title>
-  	<link rel="stylesheet" type="text/css" href="ChargeStyles.css">
+  	<title>Charge</title>
+  	<link rel="stylesheet" type="text/css" href="Charge.css">
   	<link rel="manifest" href="manifest.json">
   	<script src='https://cdn.jsdelivr.net/npm/@inrupt/solid-client-authn-browser/dist/solid-client-authn.bundle.js'></script>
-  	<meta name="application-name" content="SolidCharge">
+  	<meta name="application-name" content="Charge">
 </head>
 <body>
 <header class="header">
 	<div id="heading">
-        <span id="headerTitle">SolidCharge</span>
+        <span id="headerTitle">Charge</span>
         <button id="buttonSync" class="sync-button">
     </div>
 </header>
@@ -38,7 +38,10 @@
       	<button id="buttonSaveLog" class="save-button"></button>  
     </div>
 </div>
+<div id='messageDialog' class='dialog'>
+	<div id='message'></div>
 </div>
-<script src="ChargeScript.js" async></script>
+</div>
+<script src="Charge.js" async></script>
 </body>
 </html>
